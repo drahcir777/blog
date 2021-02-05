@@ -20,4 +20,6 @@ const Article = conn.define('articles', {
 Cartegory.hasMany(Article);
 Article.belongsTo(Cartegory);
 
+// Article.sync({ force: true });
+
 module.exports = Article;
