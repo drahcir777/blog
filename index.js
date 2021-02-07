@@ -28,8 +28,13 @@ conn.authenticate()
 app.use("/", categoriesController);
 app.use("/", articlesController);
 
-app.get('/', (req, res) => {
-  res.render("index");
+app.get('/', async (req, res) => {
+  try {
+    const articles = await Article.findAll()
+    return res.render("index", { articles });
+  } catch (error) {
+    console.log("Error", error)
+  }
 })
 
 app.listen(8080, () => {
